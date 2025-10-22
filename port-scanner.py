@@ -59,8 +59,15 @@ def get_ports(cli_ports=None):
 
 
 def get_options(cli_options=None):
-    if cli_options:
-        return cli_options.strip()
+    if cli_options is None:
+        pass
+    
+    elif not cli_options: 
+        return "-T4" # use the default
+        
+    else:
+        return " ".join(cli_options)
+
     options = input("[*] Enter Nmap arguments (e.g., -sV -sC) [Press Enter for default: -T4]: ").strip()
     if not options:
         options = "-T4"  # default to faster scan
@@ -123,25 +130,39 @@ def main():
     parser = argparse.ArgumentParser(description="Simple Python Nmap Port Scanner")
     parser.add_argument("-t", "--target", help="Target IP or hostname")
     parser.add_argument("-p", "--ports", help="Port range, e.g., '1-1024' or '80,443'")
-    parser.add_argument("-o", "--options", help="Nmap options, e.g., '-sV -sC'")
+    
+    # --- MODIFIED LINE ---
+    # Changed nargs='+' to nargs='*' (zero or more)
+    # This allows the -o flag to be absent, or present with zero args
+    parser.add_argument("-o", "--options", help="Nmap options, e.g., -sV -sC", nargs='*')
+    # --- END MODIFIED LINE ---
+
     args = parser.parse_args()
+    
+    # --- NEW LOGIC ---
+    # Store the initial CLI args. We will clear these after the first loop.
+    cli_target = args.target
+    cli_ports = args.ports
+    cli_options = args.options
+    # --- END NEW LOGIC ---
 
     while True:
         print_banner()
-        target_host = get_target(args.target)
+        
+        target_host = get_target(cli_target)
         print(f"[+] Set target to: {target_host}")
 
-        port_range = get_ports(args.ports)
+        port_range = get_ports(cli_ports)
         print(f"[+] Set port range to: {port_range}")
 
-        scan_options = get_options(args.options)
+        scan_options = get_options(cli_options)
         print(f"[+] Using Nmap arguments: {scan_options}\n")
 
         run_scan(target_host, port_range, scan_options)
 
-        args.target = None
-        args.ports = None
-        args.options = None
+        cli_target = None
+        cli_ports = None
+        cli_options = None
 
         choice = input("\n[*] Type 'r' to scan another hostname or 'Enter' to exit: ").strip().lower()
         if choice != "r":
