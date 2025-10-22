@@ -19,8 +19,8 @@ Execution of this script requires the following system components and libraries:
 1. Acquire the Source Code:  
    Clone or download the repository to your local machine:  
    ```bash
-   $ git clone https://github.com/durd3n0/port-scanner.git  
-   $ cd port-scanner
+    git clone https://github.com/durd3n0/port-scanner.git  
+    cd port-scanner
    ```
 
 2. **Install the Nmap Engine:**  
@@ -29,7 +29,7 @@ Execution of this script requires the following system components and libraries:
    * **macOS (Homebrew):** brew install nmap  
 3. **Install the python-nmap Library:**  
    ```bash
-   $ pip install python-nmap
+    pip install python-nmap
    ```
    *(The script includes a runtime check for this dependency.)*
 
@@ -41,7 +41,7 @@ The utility can be executed in two primary modes:
 
 Execute the script without command-line arguments to initiate the guided, interactive session:  
 ```bash
-$ python3 port-scanner.py
+ python3 port-scanner.py
 ```
 The tool will display its banner and guide the user through the process, prompting for target, ports, and scan options.
 
@@ -51,7 +51,7 @@ Supply all parameters as command-line arguments for non-interactive or automated
 
 #### **Syntax:**
 ```bash
-$ python3 port-scanner.py -t <target> -p <ports> -o "<options>"
+ python3 port-scanner.py -t <target> -p <ports> -o "<options>"
 ```
 *Note: Encapsulating Nmap options in quotation marks is recommended practice.*
 
@@ -59,11 +59,11 @@ $ python3 port-scanner.py -t <target> -p <ports> -o "<options>"
 
 This command scans scan.nmap.org for ports 80 and 443 with the \-sV (version detection) argument.  
 ```bash
-$ python3 port-scanner.py -t scan.nmap.org -p 80,443 -o "sV"
+ python3 port-scanner.py -t scan.nmap.org -p 80,443 -o "sV"
 ```
 ### **Example Session (CLI Mode)**
 ```
-$ python3 port-scanner.py -t scan.nmap.org -p 80,443 -o "sV"
+ python3 port-scanner.py -t scan.nmap.org -p 80,443 -o "sV"
 
 [+] Set target to: scan.nmap.org
 [+] Set port range to: 80,443
@@ -96,5 +96,6 @@ Protocol : tcp
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## **Ethical Use Disclaimer**
+
 
 This tool is provided for educational purposes and authorized security assessments **exclusively**. This utility must be used **only** on systems for which the operator possesses explicit, written authorization to scan. Unauthorized scanning constitutes a potential violation of local, state, or federal laws and organizational policies. The author assumes no liability for any misuse or damage resulting from this script's operation.
