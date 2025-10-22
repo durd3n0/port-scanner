@@ -57,7 +57,7 @@ Supply all parameters as command-line arguments for non-interactive or automated
 
 #### **Example:**
 
-This command scans scan.nmap.org for ports 80 and 443 with the \-sV (version detection) argument.  
+This command scans scan.nmap.org for ports 80 and 443 with the -sV (version detection) argument.  
 ```bash
  python3 port-scanner.py -t scan.nmap.org -p 80,443 -o "sV"
 ```
@@ -86,10 +86,10 @@ Protocol : tcp
 ```
 ### **All Command-Line Arguments**
 ```
-| \-t,  --target  | Target IP or hostname.                           |  
-| \-p,  --ports   | Port range, e.g., '1-1024' or '80,443'.          |  
-| \-o,  --options | Custom arguments to pass to Nmap (e.g. "sV sC"). |  
-| \-h,  --help    | Display the help message and exit.               |
+| -t,  --target  | Target IP or hostname.                           |  
+| -p,  --ports   | Port range, e.g., '1-1024' or '80,443'.          |  
+| -o,  --options | Custom arguments to pass to Nmap (e.g. "sV sC"). |  
+| -h,  --help    | Display the help message and exit.               |
 ```
 ## **License**
 
@@ -99,4 +99,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 
 This tool is provided for educational purposes and authorized security assessments **exclusively**. This utility must be used **only** on systems for which the operator possesses explicit, written authorization to scan. Unauthorized scanning constitutes a potential violation of local, state, or federal laws and organizational policies. The author assumes no liability for any misuse or damage resulting from this script's operation.
+
 
